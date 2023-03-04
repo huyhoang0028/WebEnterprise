@@ -1,0 +1,52 @@
+﻿@model CUser
+
+<h2>@Model.FirstName @Model.LastName</h2>
+
+<p><strong>Staff Number:</strong> @Model.StaffNumber</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Hometown:</strong> @Model.HomeTown</p>
+<p><strong>Social Media:</strong> @Model.SocialMedia</p>
+
+@if (Model.Ideas != null && Model.Ideas.Count > 0)
+{
+    <h3>Ideas:</h3>
+    <ul>
+        @foreach (var idea in Model.Ideas)
+        {
+            <li>@idea.Title</li>
+        }
+    </ul>
+}
+
+@if (Model.Comments != null && Model.Comments.Count > 0)
+{
+    <h3>Comments:</h3>
+    <ul>
+        @foreach (var comment in Model.Comments)
+        {
+            <li>@comment.Text</li>
+        }
+    </ul>
+}
+
+@if (Model.Reacts != null && Model.Reacts.Count > 0)
+{
+    <h3>Reacts:</h3>
+    <ul>
+        @foreach (var react in Model.Reacts)
+        {
+            <li>@react.Reaction</li>
+        }
+    </ul>
+}
+
+@if (Model.Views != null && Model.Views.Count > 0)
+{
+    <h3>Views:</h3>
+    <ul>
+        @foreach (var view in Model.Views)
+        {
+            <li>@view.User</li>
+        }
+    </ul>
+}

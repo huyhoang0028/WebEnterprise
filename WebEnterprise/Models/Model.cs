@@ -105,7 +105,7 @@ namespace WebEnterprise.Models
     public class React
     {
         public int Id { get; set; }
-        public int Reaction { get; set; }
+        public string? Reaction { get; set; }
 
         public string? UserId { get; set; }
         public virtual CUser? User { get; set; }

@@ -16,7 +16,7 @@ namespace WebEnterprise.Data
         {
         }
 
-
+        public DbSet<CUser> CUser { get; set; }
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Idea> Ideas { get; set; }
         public DbSet<Catogory> Catogories { get; set; }

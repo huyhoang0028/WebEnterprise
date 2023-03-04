@@ -9,6 +9,26 @@
       "PackagePath": "staticwebassets\\css\\AddIdeas.css"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\Footer.css",
+      "PackagePath": "staticwebassets\\css\\Footer.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\Header.css",
+      "PackagePath": "staticwebassets\\css\\Header.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\all.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\profile.css",
+      "PackagePath": "staticwebassets\\css\\profile.css"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\reactAnimation.css",
+      "PackagePath": "staticwebassets\\css\\reactAnimation.css"
+    },
+    {
       "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -63,6 +83,10 @@
     {
       "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\images\\shoes.jpg",
       "PackagePath": "staticwebassets\\images\\shoes.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\js\\react.js",
+      "PackagePath": "staticwebassets\\js\\react.js"
     },
     {
       "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\js\\site.js",
@@ -763,6 +787,38 @@
     {
       "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\lib\\tinymce\\tinymce.min.js",
       "PackagePath": "staticwebassets\\lib\\tinymce\\tinymce.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-v4compatibility.ttf",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\WebEnterprise\\WebEnterprise\\wwwroot\\webfonts\\fa-v4compatibility.woff2",
+      "PackagePath": "staticwebassets\\webfonts\\fa-v4compatibility.woff2"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebEnterprise.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -401,8 +401,8 @@ namespace WebEnterprise.Data.Migrations
                     b.Property<int?>("IdeaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Reaction")
-                        .HasColumnType("int");
+                    b.Property<string>("Reaction")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
