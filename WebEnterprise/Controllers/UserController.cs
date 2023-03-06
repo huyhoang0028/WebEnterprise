@@ -42,7 +42,7 @@ namespace WebEnterprise.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string? id, CUser user, IFormFile file)
         {
-            if (id != user.Id)
+            if (id != user.CUserId)
             {
                 return NotFound();
             }
@@ -55,8 +55,8 @@ namespace WebEnterprise.Controllers
 
             if (ModelState.IsValid)
             {
-                userToUpdate.FirstName = user.FirstName;
-                userToUpdate.LastName = user.LastName;
+                userToUpdate.Mail = user.Mail;
+                userToUpdate.Name = user.Name;
                 userToUpdate.StaffNumber = user.StaffNumber;
                 userToUpdate.Fullname_ = user.Fullname_;
                 userToUpdate.Address = user.Address;
@@ -80,7 +80,7 @@ namespace WebEnterprise.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(userToUpdate.Id))
+                    if (!UserExists(userToUpdate.CUserId))
                     {
                         return NotFound();
                     }
@@ -97,7 +97,7 @@ namespace WebEnterprise.Controllers
 
         private bool UserExists(string id)
         {
-            return _userManager.Users.Any(e => e.Id == id);
+            return _userManager.Users.Any(e => e.CUserId == id);
         }
     }
 }

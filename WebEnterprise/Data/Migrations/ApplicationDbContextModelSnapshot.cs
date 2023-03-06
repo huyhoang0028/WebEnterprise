@@ -155,7 +155,7 @@ namespace WebEnterprise.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebEnterprise.Models.CUser", b =>
+            modelBuilder.Entity("WebEnterprise.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -163,15 +163,12 @@ namespace WebEnterprise.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("CUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DepartmentId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -179,21 +176,6 @@ namespace WebEnterprise.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fullname_")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HomeTown")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Images")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -218,16 +200,7 @@ namespace WebEnterprise.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SocialMedia")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StaffNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -239,7 +212,9 @@ namespace WebEnterprise.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("CUserId")
+                        .IsUnique()
+                        .HasFilter("[CUserId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -249,9 +224,53 @@ namespace WebEnterprise.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("WebEnterprise.Models.CUser", b =>
+                {
+                    b.Property<string>("CUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Fullname_")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HomeTown")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Images")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SocialMedia")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StaffNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CUserId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("RoleId")
+                        .IsUnique()
+                        .HasFilter("[RoleId] IS NOT NULL");
+
+                    b.ToTable("CUser");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.CView", b =>
@@ -294,7 +313,7 @@ namespace WebEnterprise.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catogories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.Comment", b =>
@@ -324,7 +343,7 @@ namespace WebEnterprise.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.Department", b =>
@@ -418,13 +437,13 @@ namespace WebEnterprise.Data.Migrations
 
             modelBuilder.Entity("WebEnterprise.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -468,7 +487,7 @@ namespace WebEnterprise.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("WebEnterprise.Models.CUser", null)
+                    b.HasOne("WebEnterprise.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -477,7 +496,7 @@ namespace WebEnterprise.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("WebEnterprise.Models.CUser", null)
+                    b.HasOne("WebEnterprise.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -492,7 +511,7 @@ namespace WebEnterprise.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebEnterprise.Models.CUser", null)
+                    b.HasOne("WebEnterprise.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -501,11 +520,20 @@ namespace WebEnterprise.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("WebEnterprise.Models.CUser", null)
+                    b.HasOne("WebEnterprise.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebEnterprise.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("WebEnterprise.Models.CUser", "CUser")
+                        .WithOne("User")
+                        .HasForeignKey("WebEnterprise.Models.ApplicationUser", "CUserId");
+
+                    b.Navigation("CUser");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.CUser", b =>
@@ -514,9 +542,11 @@ namespace WebEnterprise.Data.Migrations
                         .WithMany("Users")
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("WebEnterprise.Models.Role", null)
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                    b.HasOne("WebEnterprise.Models.Role", "Role")
+                        .WithOne("User")
+                        .HasForeignKey("WebEnterprise.Models.CUser", "RoleId");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.CView", b =>
@@ -593,6 +623,8 @@ namespace WebEnterprise.Data.Migrations
 
                     b.Navigation("Reacts");
 
+                    b.Navigation("User");
+
                     b.Navigation("Views");
                 });
 
@@ -617,7 +649,7 @@ namespace WebEnterprise.Data.Migrations
 
             modelBuilder.Entity("WebEnterprise.Models.Role", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.Submission", b =>

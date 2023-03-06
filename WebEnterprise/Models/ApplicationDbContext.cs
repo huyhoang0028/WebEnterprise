@@ -9,28 +9,22 @@ using WebEnterprise.Models;
 
 namespace WebEnterprise.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<CUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<CUser> CUser { get; set; }
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Idea> Ideas { get; set; }
-        public DbSet<Catogory> Catogories { get; set; }
-
-        public DbSet<Role> Role { get; set; }
-
-        public DbSet<Comment> Comment { get; set; }
-
+        public DbSet<Catogory> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<CView> Views { get; set; }
         public DbSet<React> Reacts { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<WebEnterprise.Models.CUser> CUser { get; set; } = default!;
+
     }
-
-    
-   
-
 }

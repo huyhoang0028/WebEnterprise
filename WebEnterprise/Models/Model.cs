@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebEnterprise.Models
 {
+    
+
     public class Idea
     {
         public int Id { get; set; }
@@ -40,25 +43,43 @@ namespace WebEnterprise.Models
 
     }
 
-    public class CUser : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+              
+        [ForeignKey("CUser")]
+        public string? CUserId { get; set; }
+        public virtual CUser? CUser { get; set; }
+        
+    }
+
+    public class CUser
+    {
+        public string? CUserId { get; set; }
+        public string? Mail { get; set; }
+        public string? Name { get; set; }
         public string? StaffNumber { get; set; }
         public string? Fullname_ { get; set; }
         public string? Address { get; set; }
         public string? HomeTown { get; set; }
         public string? SocialMedia { get; set; }
-        
 
         [Column(TypeName = "varbinary(max)")]
         public byte[]? Images { get; set; }
+
+        public virtual ApplicationUser? User { get; set; }
+
+        [ForeignKey("Role")]
+        public string? RoleId { get; set; }
+        public virtual Role? Role { get; set; }
+
 
         public virtual ICollection<Idea>? Ideas { get; set; }
         public virtual ICollection<Comment>? Comments { get; set; }
         public virtual ICollection<React>? Reacts { get; set; }
         public virtual ICollection<CView>? Views { get; set; }
     }
+
+
     public class Department
     {
         public int Id { get; set; }
@@ -67,12 +88,16 @@ namespace WebEnterprise.Models
 
         public virtual ICollection<CUser>? Users { get; set; }
     }
+
     public class Role
     {
-        public int Id { get; set; }
+        public string? Id { get; set; }
+        public string? RoleId { get; set; }
         public string? Name { get; set; }
 
-        public virtual ICollection<CUser>? Users { get; set; }
+        public virtual CUser? User { get; set; }
+
+
     }
 
 
